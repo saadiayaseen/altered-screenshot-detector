@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Detection History - Altered Screenshot Detector</title>
+</head>
+<body>
+    <h1>Your Detection History</h1>
+    {% if records %}
+        <table border="1" cellpadding="5" cellspacing="0">
+            <tr>
+                <th>Filename</th>
+                <th>Diffusion Forensics Result</th>
+                <th>RoBERTa Text Analysis Result</th>
+            </tr>
+            {% for record in records %}
+            <tr>
+                <td>{{ record.filename }}</td>
+                <td>{{ record.diffusion_result }}</td>
+                <td>{{ record.roberta_result }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No history found.</p>
+    {% endif %}
+    <br />
+    <a href="{{ url_for('upload') }}">Analyze New Screenshot</a> |
+    <a href="{{ url_for('logout') }}">Logout</a>
+</body>
+</html>

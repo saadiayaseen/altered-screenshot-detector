@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Analysis Result - Altered Screenshot Detector</title>
+</head>
+<body>
+    <h1>Analysis Result for {{ filename }}</h1>
+    <p><strong>Diffusion Forensics Result:</strong> {{ diffusion }}</p>
+    <p><strong>RoBERTa Text Analysis Result:</strong> {{ roberta }}</p>
+    <br />
+    <a href="{{ url_for('upload') }}">Analyze Another</a> |
+    <a href="{{ url_for('history') }}">View History</a> |
+    <a href="{{ url_for('logout') }}">Logout</a>
+</body>
+</html>

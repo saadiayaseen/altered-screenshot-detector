@@ -1,0 +1,7 @@
+Flask==2.3.2
+Flask-Login==0.6.2
+Flask-SQLAlchemy==3.0.3
+transformers==4.30.2
+torch==2.0.1
+pillow==10.0.0
+pytesseract==0.3.11

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Upload Screenshot - Altered Screenshot Detector</title>
+</head>
+<body>
+    <h1>Upload Screenshot for Analysis</h1>
+    <form method="POST" enctype="multipart/form-data" action="{{ url_for('upload') }}">
+        <input type="file" name="image" accept="image/*" required />
+        <br /><br />
+        <input type="submit" value="Analyze Screenshot" />
+    </form>
+    <br />
+    <a href="{{ url_for('history') }}">View History</a> |
+    <a href="{{ url_for('logout') }}">Logout</a>
+</body>
+</html>
