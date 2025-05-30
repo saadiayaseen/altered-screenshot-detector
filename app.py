@@ -73,8 +73,8 @@ def run_roberta_analysis(image_path):
 # Routes
 
 @app.route('/')
-def home():
-    return render_template('index.html')
+def welcome():
+    return render_template('welcome.html')
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -109,7 +109,7 @@ def login():
 @login_required
 def logout():
     logout_user()
-    return redirect(url_for('home'))
+    return redirect(url_for('welcome'))
 
 @app.route('/upload', methods=['GET', 'POST'])
 @login_required
@@ -150,3 +150,4 @@ if __name__ == '__main__':
     with app.app_context():
         db.create_all()
     app.run(debug=True)
+    

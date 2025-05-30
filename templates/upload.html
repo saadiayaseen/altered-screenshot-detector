@@ -1,18 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <title>Upload Screenshot - Altered Screenshot Detector</title>
+  <meta charset="UTF-8" />
+  <title>Upload Screenshot - Detectify</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+      color: #1e3a8a;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 80px 20px 40px;
+    }
+
+    header {
+      width: 100%;
+      max-width: 900px;
+      margin-bottom: 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 30px;
+      font-weight: 700;
+    }
+
+    nav a {
+      font-weight: 600;
+      color: #1e40af;
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 16px;
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.3s ease;
+    }
+
+    nav a:hover {
+      border-bottom: 2px solid #1e40af;
+    }
+
+    main {
+      background: white;
+      padding: 40px 50px;
+      border-radius: 12px;
+      box-shadow: 0 15px 35px rgba(30, 58, 138, 0.2);
+      width: 100%;
+      max-width: 500px;
+      text-align: center;
+    }
+
+    main h2 {
+      margin-top: 0;
+      margin-bottom: 30px;
+      font-weight: 700;
+      font-size: 24px;
+      color: #1e3a8a;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    input[type="file"] {
+      border: 2px dashed #93c5fd;
+      padding: 15px 20px;
+      width: 100%;
+      max-width: 350px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: border-color 0.3s ease;
+      font-size: 16px;
+      color: #1e40af;
+      background-color: #eff6ff;
+    }
+
+    input[type="file"]:hover,
+    input[type="file"]:focus {
+      border-color: #2563eb;
+      outline: none;
+    }
+
+    input[type="submit"] {
+      margin-top: 30px;
+      padding: 14px 0;
+      width: 100%;
+      max-width: 350px;
+      font-size: 18px;
+      font-weight: 700;
+      color: white;
+      background: linear-gradient(90deg, #2563eb, #1e40af);
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 6px 12px rgba(37, 99, 235, 0.6);
+      transition: background 0.3s ease;
+    }
+
+    input[type="submit"]:hover {
+      background: linear-gradient(90deg, #1e40af, #2563eb);
+      box-shadow: 0 8px 20px rgba(30, 58, 138, 0.7);
+    }
+
+    .links {
+      margin-top: 35px;
+    }
+
+    .links a {
+      font-weight: 600;
+      margin: 0 15px;
+      color: #2563eb;
+      text-decoration: none;
+      font-size: 16px;
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.3s ease;
+    }
+
+    .links a:hover {
+      border-bottom: 2px solid #2563eb;
+    }
+
+    footer {
+      margin-top: auto;
+      padding: 15px 0;
+      width: 100%;
+      max-width: 900px;
+      color: #1e3a8a;
+      font-weight: 600;
+      text-align: center;
+      font-size: 14px;
+    }
+  </style>
 </head>
 <body>
-    <h1>Upload Screenshot for Analysis</h1>
-    <form method="POST" enctype="multipart/form-data" action="{{ url_for('upload') }}">
-        <input type="file" name="image" accept="image/*" required />
-        <br /><br />
-        <input type="submit" value="Analyze Screenshot" />
-    </form>
-    <br />
-    <a href="{{ url_for('history') }}">View History</a> |
+
+<header>
+  <h1>Detectify</h1>
+  <nav>
+    <a href="{{ url_for('welcome') }}">Home</a>
+    <a href="{{ url_for('history') }}">History</a>
     <a href="{{ url_for('logout') }}">Logout</a>
+  </nav>
+</header>
+
+<main>
+  <h2>Upload Screenshot for Authenticity Check</h2>
+  <form method="POST" enctype="multipart/form-data" action="{{ url_for('upload') }}">
+    <input type="file" name="image" accept="image/*" required />
+    <input type="submit" value="Analyze Screenshot" />
+  </form>
+  <div class="links">
+    <a href="{{ url_for('history') }}">View Analysis History</a>
+    <a href="{{ url_for('welcome') }}">Back to Welcome</a>
+  </div>
+</main>
+
+<footer>
+  &copy; 2025 Detectify | Ensuring Screenshot Integrity
+</footer>
+
 </body>
 </html>

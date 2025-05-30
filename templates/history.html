@@ -1,31 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <title>Detection History - Altered Screenshot Detector</title>
+  <meta charset="UTF-8" />
+  <title>Detection History - Detectify</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      background: #f1f5f9;
+      margin: 0;
+      padding: 40px 20px;
+      color: #1e293b;
+    }
+
+    .history-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+      overflow-x: auto;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #1e3a8a;
+      font-size: 2em;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      table-layout: fixed;
+    }
+
+    th, td {
+      padding: 12px 10px;
+      text-align: center;
+      border-bottom: 1px solid #e2e8f0;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      max-width: 200px;
+    }
+
+    th {
+      background-color: #e0e7ff;
+      color: #1e40af;
+    }
+
+    tr:hover {
+      background-color: #f0f4ff;
+      transition: background-color 0.2s ease;
+    }
+
+    .btn-group {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .btn-group a {
+      display: inline-block;
+      margin: 0 10px;
+      padding: 10px 18px;
+      background: #1e40af;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      transition: background 0.3s;
+    }
+
+    .btn-group a:hover {
+      background: #1d4ed8;
+    }
+
+    .no-history {
+      text-align: center;
+      font-size: 1.2em;
+      color: #64748b;
+      margin-top: 40px;
+    }
+
+    .icon-title {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      font-size: 24px;
+    }
+
+    .icon-title i {
+      color: #4f46e5;
+    }
+  </style>
 </head>
 <body>
-    <h1>Your Detection History</h1>
+  <div class="history-container">
+    <div class="icon-title">
+      <i class="fas fa-clock-rotate-left"></i>
+      <h1>Your Detection History</h1>
+    </div>
+
     {% if records %}
-        <table border="1" cellpadding="5" cellspacing="0">
+      <table>
+        <thead>
+          <tr>
+            <th>Filename</th>
+            <th>Diffusion Result</th>
+            <th>RoBERTa Result</th>
+            <!-- Removed Delete header -->
+          </tr>
+        </thead>
+        <tbody>
+          {% for record in records %}
             <tr>
-                <th>Filename</th>
-                <th>Diffusion Forensics Result</th>
-                <th>RoBERTa Text Analysis Result</th>
+              <td>{{ record.filename }}</td>
+              <td>{{ record.diffusion_result }}</td>
+              <td>{{ record.roberta_result }}</td>
+              <!-- Removed Delete button cell -->
             </tr>
-            {% for record in records %}
-            <tr>
-                <td>{{ record.filename }}</td>
-                <td>{{ record.diffusion_result }}</td>
-                <td>{{ record.roberta_result }}</td>
-            </tr>
-            {% endfor %}
-        </table>
+          {% endfor %}
+        </tbody>
+      </table>
     {% else %}
-        <p>No history found.</p>
+      <div class="no-history">
+        <p><i class="fas fa-folder-open"></i> No history found.</p>
+      </div>
     {% endif %}
-    <br />
-    <a href="{{ url_for('upload') }}">Analyze New Screenshot</a> |
-    <a href="{{ url_for('logout') }}">Logout</a>
+
+    <div class="btn-group">
+      <a href="{{ url_for('upload') }}"><i class="fas fa-upload"></i> New Analysis</a>
+      <a href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i> Logout</a>
+    </div>
+  </div>
 </body>
 </html>

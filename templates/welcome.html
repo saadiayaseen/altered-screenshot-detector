@@ -1,0 +1,136 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Detectify - Welcome</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #f8f9fc, #eaf0f7);
+      color: #333;
+    }
+
+    header {
+      background-color: #1e3a8a;
+      color: white;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      font-size: 28px;
+      margin: 0;
+    }
+
+    nav a {
+      margin-left: 20px;
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 100px 20px 60px;
+    }
+
+    .hero h2 {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 20px;
+      margin-bottom: 30px;
+      color: #555;
+    }
+
+    .btn {
+      background-color: #2563eb;
+      color: white;
+      padding: 12px 25px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #1e40af;
+    }
+
+    .features {
+      display: flex;
+      justify-content: center;
+      margin-top: 60px;
+      padding: 0 20px 80px;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+
+    .feature-card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+      padding: 25px;
+      width: 280px;
+      text-align: left;
+    }
+
+    .feature-card h3 {
+      color: #284186;
+      margin-bottom: 10px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #1e3a8a;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Detectify</h1>
+    <nav>
+      <a href="#features">Features</a>
+      <a href="{{ url_for('login') }}">Login</a>
+      <a href="{{ url_for('register') }}">Register</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>Unmasking Digital Truths</h2>
+    <p>Detect altered screenshots and suspicious content using AI-powered forensics.</p>
+    <a href="{{ url_for('upload') }}" class="btn">Get Started</a>
+  </section>
+
+  <section id="features" class="features">
+    <div class="feature-card">
+      <h3>Image Tampering Detection</h3>
+      <p>Uses advanced AI techniques to detect if images have been edited or manipulated.</p>
+    </div>
+    <div class="feature-card">
+      <h3>Text Integrity Analysis</h3>
+      <p>Uses RoBERTa-based models to flag suspicious or misleading text extracted via OCR.</p>
+    </div>
+    <div class="feature-card">
+      <h3>Secure History</h3>
+      <p>Keep a private log of all your uploads and analysis results in your user account.</p>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 Detectify | Built with AI to protect visual truth.
+  </footer>
+</body>
+</html>
